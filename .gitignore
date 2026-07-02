@@ -1,0 +1,31 @@
+# ===== 踏序足迹 taxuzuji =====
+# Deps
+node_modules/
+package-lock.json.bak
+# Build output
+dist/
+build/
+# Temp scripts (local icon generation probes)
+_*.mjs
+# Cache / logs
+.DS_Store
+*.log
+.cache/
+.parcel-cache/
+.vite/
+.trae-cn/
+.trae/
+.npm/
+.vscode/
+.idea/
+# Android build artifacts
+android/.gradle/
+android/build/
+android/app/build/
+android/capacitor-cordova-android-plugins/build/
+android/local.properties
+android/.idea/
+*.iml
+# Env
+.env
+.env.*

@@ -1,0 +1,6 @@
+{
+  "name": "踏序足迹",
+  "description": "个人专属城市足迹可视化记录APP — 记录你的旅途、工作、出行等所有城市到访轨迹，用可视化特效沉淀生活印记。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

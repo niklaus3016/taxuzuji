@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隐私政策 - 踏序足迹</title>
+    <style>
+        /* ========== 基础重置 ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            min-height: 100vh;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC',
+                         'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            /* 与 App 默认「深色星空」主题一致的背景渐变 */
+            background:
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(42, 123, 170, 0.18), transparent 60%),
+                linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #010816 100%);
+            background-attachment: fixed;
+            line-height: 1.7;
+            color: #CBD5E1;           /* slate-300 正文色 */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            padding: 32px 16px;
+        }
+
+        /* ========== 主容器 —— 玻璃态卡片，与 App 内 modal 同风格 ========== */
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            background: rgba(15, 23, 42, 0.82);     /* bg-slate-900/82 */
+            backdrop-filter: blur(20px) saturate(140%);
+            -webkit-backdrop-filter: blur(20px) saturate(140%);
+            border: 1px solid rgba(51, 65, 85, 0.5); /* border-slate-700/50 */
+            border-radius: 20px;
+            padding: 48px 40px;
+            box-shadow:
+                0 24px 60px -15px rgba(0, 0, 0, 0.55),
+                0 0 0 1px rgba(42, 123, 170, 0.06) inset;
+        }
+
+        /* ========== 排版 ========== */
+        h1 {
+            color: #F1F5F9;               /* slate-100 标题色 */
+            text-align: center;
+            margin-bottom: 8px;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+        @media (min-width: 640px) {
+            h1 { font-size: 30px; }
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748B;               /* slate-500 muted */
+            margin-bottom: 28px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .subtitle strong {
+            color: #F1F5F9;               /* slate-100 strong */
+            font-weight: 600;
+        }
+
+        h2 {
+            color: #F1F5F9;
+            margin-top: 36px;
+            margin-bottom: 18px;
+            font-size: 20px;
+            font-weight: 700;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(51, 65, 85, 0.6);  /* border-b-slate-700/60 */
+            letter-spacing: 0.2px;
+        }
+        @media (min-width: 640px) {
+            h2 { font-size: 22px; margin-top: 40px; }
+        }
+
+        p {
+            margin-bottom: 16px;
+            text-align: justify;
+            color: #CBD5E1;               /* slate-300 正文 */
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        p:last-child { margin-bottom: 0; }
+
+        ol, ul {
+            margin-left: 0;
+            padding-left: 24px;
+            margin-bottom: 18px;
+        }
+        ol { list-style: decimal; }
+        li {
+            margin-bottom: 12px;
+            color: #CBD5E1;
+            font-size: 15px;
+            line-height: 1.8;
+            padding-left: 4px;
+        }
+        ol > li::marker {
+            color: #2A7BAA;                /* 品牌蓝序号 */
+            font-weight: 600;
+        }
+
+        strong {
+            color: #F1F5F9;               /* slate-100 强调 */
+            font-weight: 600;
+        }
+
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 0.92em;
+            background: rgba(51, 65, 85, 0.6);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #E2E8F0;
+        }
+
+        /* ========== 首段欢迎卡片（左侧品牌蓝色条 + 淡蓝背景） ========== */
+        .welcome-card {
+            background: rgba(42, 123, 170, 0.10);   /* 品牌蓝 10% */
+            padding: 22px 26px;
+            border-left: 4px solid #2A7BAA;         /* 品牌蓝左侧色条 */
+            border-radius: 12px;
+            margin: 0 0 28px 0;
+        }
+        .welcome-card p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #CBD5E1;
+        }
+
+        /* ========== 联系方式面板 ========== */
+        .contact-panel {
+            background: rgba(30, 41, 59, 0.6);     /* bg-slate-800/60 */
+            padding: 20px 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(51, 65, 85, 0.7); /* border-slate-700/70 */
+            margin: 0 0 28px 0;
+        }
+        .contact-panel p {
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        .contact-panel p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ========== 页脚 ========== */
+        .footer {
+            margin-top: 48px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(51, 65, 85, 0.6); /* border-t-slate-700/60 */
+            text-align: center;
+        }
+        .footer p {
+            text-align: center;
+            margin-bottom: 8px;
+            color: #64748B;                      /* slate-500 muted */
+            font-size: 14px;
+        }
+        .footer .copyright {
+            margin-top: 16px !important;
+            font-size: 12px !important;
+            color: #64748B;
+        }
+
+        /* ========== 响应式 ========== */
+        @media (max-width: 600px) {
+            body { padding: 16px 10px; }
+            .container {
+                padding: 32px 22px;
+                border-radius: 16px;
+            }
+            h1 { font-size: 24px; }
+            h2 { font-size: 18px; margin-top: 30px; }
+            p, li { font-size: 14.5px; line-height: 1.75; }
+            .welcome-card { padding: 18px 20px; }
+            .contact-panel { padding: 16px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ========== 标题 ========== -->
+        <h1>🔒 隐私政策</h1>
+        <p class="subtitle"><strong>生效日期</strong>：2026年07月02日</p>
+
+        <!-- ========== 首段欢迎卡片 ========== -->
+        <div class="welcome-card">
+            <p>欢迎使用「<strong>踏序足迹</strong>」（以下简称&quot;本应用&quot;）。
+            本应用由<strong> 光年跃迁（温州）科技有限公司 </strong>
+            （以下简称&quot;我们&quot;）开发并运营。我们深知个人信息对您的重要性，将严格遵守
+            《中华人民共和国个人信息保护法》等相关法律法规，保护您的个人信息安全。</p>
+        </div>
+
+        <p>本隐私政策旨在说明我们如何收集、使用、存储和保护您在使用本应用过程中提供的个人信息，
+        以及您对这些信息所享有的权利。请您在使用本应用前仔细阅读并充分理解本政策的全部内容，
+        尤其是加粗的条款。如您对本政策有任何疑问、意见或建议，可通过本政策末尾提供的联系方式与我们联系。</p>
+
+        <!-- ========== 一、我们收集的信息 ========== -->
+        <h2>一、我们收集的信息</h2>
+        <p>在您使用本应用的过程中，我们会收集以下信息，以提供、维护和改进我们的服务：</p>
+        <ol>
+            <li>
+                <strong>足迹数据</strong>：
+                您在使用本应用过程中<strong>主动录入</strong>的所有
+                <strong>到访城市、出行日期、出行类型、旅途感悟文字、旅行照片（Base64 本地存储）、
+                个性化旅行签名，以及由上述数据衍生出的地图点亮轨迹与统计数据</strong>。
+                这些数据是本应用的核心功能内容，用于为您提供城市点亮可视化、
+                数据看板、时光轴浏览、纪念明信片生成等服务。
+            </li>
+            <li>
+                <strong>偏好设置数据</strong>：
+                您选择的<strong>地图主题（浅色/深色/极简/复古）</strong>
+                与个性化旅行签名，用于为您提供一致的个性化视觉体验。
+            </li>
+            <li>
+                <strong>关于设备信息的说明</strong>：
+                本应用<strong>不主动收集</strong>任何
+                设备型号、操作系统版本、IMEI/Android_ID/IDFA、IP 地址等设备识别信息。
+                应用运行过程中仅使用浏览器/Capacitor WebView 自带的
+                <strong>本地存储（localStorage / IndexedDB）</strong>
+                保存您主动录入的足迹与偏好数据，<strong>不会将任何数据上传至服务器</strong>。
+            </li>
+        </ol>
+
+        <!-- ========== 二、我们如何使用信息 ========== -->
+        <h2>二、我们如何使用收集的信息</h2>
+        <p>我们仅会在以下<strong>合法、正当、必要</strong>的范围内使用您的个人信息：</p>
+        <ol>
+            <li>
+                <strong>提供和改进核心服务</strong>：
+                使用您的足迹数据实现「到访城市地图点亮」「出行类型可视化」「数据看板统计」
+                「时光轴浏览」「城市纪念明信片生成」等核心功能；通过本应用自身的更新迭代持续改进产品体验。
+            </li>
+            <li>
+                <strong>本地匿名化统计</strong>：
+                在对您的个人信息进行<strong>纯本地去标识化</strong>处理后，
+                用于应用内的可视化看板（如饼图出行分布、Top5 常造访城市排行）。
+                该类统计仅在您当前设备内完成，不对外发送，不用于商业决策或对外报告。
+            </li>
+            <li>
+                <strong>协议升级与合规提示</strong>：
+                当《用户服务协议》《隐私政策》发生重大内容更新时，
+                使用您本地存储的「同意协议版本号」判断是否需要重新弹出同意提示，
+                以确保您对新协议内容的<strong>知情权与选择权</strong>。
+            </li>
+        </ol>
+
+        <!-- ========== 三、共享、转让和公开披露 ========== -->
+        <h2>三、我们如何共享、转让和公开披露信息</h2>
+        <p>我们郑重承诺，严格保护您的个人信息，
+        <strong> 不会在以下情形之外 向任何第三方共享、转让或公开披露 </strong>
+        您的信息：</p>
+        <ol>
+            <li>
+                <strong>法定情形</strong>：
+                根据法律法规的规定、行政或司法机关的强制性要求，我们可能会向有关部门披露您的相关信息。
+            </li>
+            <li>
+                <strong>获得您的明确同意</strong>：
+                在获得您的明确书面同意后，我们才会向第三方共享您的个人信息。
+            </li>
+            <li>
+                <strong>关于第三方 SDK 的特别说明</strong>：
+                本应用<strong>不嵌入任何</strong>
+                第三方统计 SDK、广告 SDK、推送 SDK、地图 SDK 或支付 SDK，
+                亦不通过任何合作伙伴的技术手段收集您的信息。
+                您的足迹数据<strong>仅保存在您当前设备的本地存储中</strong>，
+                除非您主动通过「JSON 导出备份」功能手动导出并自行发送，
+                否则不会流出您的设备。
+            </li>
+        </ol>
+
+        <!-- ========== 四、存储和保护 ========== -->
+        <h2>四、我们如何存储和保护信息</h2>
+        <ol>
+            <li>
+                <strong>存储地点与方式</strong>：
+                您的所有足迹与偏好数据<strong>仅存储于您自己的设备本地</strong>
+                （Web 端为浏览器 <code>localStorage</code>，Android/App 端为 Capacitor WebView
+                本地存储），不传输至中华人民共和国境内外任何服务器。
+            </li>
+            <li>
+                <strong>存储期限</strong>：
+                我们会在实现本政策所述目的所必需的最短时间内保留您的信息；
+                超出此期限后您可通过<strong>应用内「清空所有记录」</strong>一键删除，
+                或在浏览器/App 设置中清空站点数据即可立即移除。
+            </li>
+            <li>
+                <strong>安全措施</strong>：
+                我们采用符合行业标准的<strong>纯本地隔离存储</strong>模型，
+                因数据不跨网络传输，避免了传统&quot;服务器—客户端&quot;架构常见的传输泄漏风险；
+                同时建议您妥善保管设备锁屏密码，避免未经授权的物理访问导致数据泄露。
+            </li>
+        </ol>
+
+        <!-- ========== 五、您的权利 ========== -->
+        <h2>五、您的权利</h2>
+        <p>根据相关法律法规，您对您的个人信息享有以下权利：</p>
+        <ol>
+            <li>
+                <strong>访问权</strong>：
+                您可以随时在本应用的<strong>「时光轴」</strong>与
+                <strong>「数据看板」</strong>中查看、
+                管理您的全部足迹数据与统计结果。
+            </li>
+            <li>
+                <strong>更正权</strong>：
+                如您发现单条足迹的城市、日期、出行类型或旅途感悟存在错误，
+                您可以通过<strong>城市详情页的「编辑」</strong>入口随时修改更正。
+            </li>
+            <li>
+                <strong>删除权</strong>：
+                您可以随时删除<strong>单条足迹记录</strong>，
+                也可以在「设置—清空所有记录」中<strong>一键清空全部数据</strong>，
+                应用将立即从本地存储中删除相关数据。
+            </li>
+            <li>
+                <strong>数据导出权</strong>：
+                本应用提供<strong>「一键本地数据备份」</strong>功能，
+                您可将全部足迹以 JSON 文件的形式导出到设备本地任意位置保存；
+                也可在更换设备后通过「导入并还原足迹备份」恢复完整数据。
+            </li>
+            <li>
+                <strong>撤回同意权</strong>：
+                您对《用户服务协议》《隐私政策》的同意为一次性的启动授权，
+                如需撤回同意，可通过<strong>「设置—清空所有记录」</strong>
+                删除所有数据并卸载本应用即视为撤回同意；
+                我们不会因此前的同意行为而延续使用信息。
+            </li>
+        </ol>
+
+        <!-- ========== 六、未成年人保护 ========== -->
+        <h2>六、未成年人保护</h2>
+        <p>我们非常重视对未成年人个人信息的保护。如您是<strong>未满 14 周岁</strong>的未成年人，
+        在使用本应用前，应在监护人的指导下仔细阅读本政策，并征得监护人的同意。
+        如我们发现自己在未事先获得监护人可验证同意的情况下收集了未成年人的个人信息，
+        将<strong>立即删除</strong>相关数据。</p>
+
+        <!-- ========== 七、政策的更新 ========== -->
+        <h2>七、本政策的更新</h2>
+        <p>我们可能会根据法律法规的更新、业务的调整或技术的发展，适时对本隐私政策进行修订。
+        修订后的政策将在本应用内<strong>显著位置（设置页 &amp; 首启弹窗）</strong>公示，
+        并在生效前通过合理方式通知您。<strong>
+        重大内容变更时，我们会通过「首启弹窗重新征求同意」的方式再次确认您的授权</strong>；
+        如您继续使用本应用，即表示您同意接受修订后的政策。</p>
+
+        <!-- ========== 八、联系我们 ========== -->
+        <h2>八、联系我们</h2>
+        <p>如您对本隐私政策有任何疑问、意见或建议，或需要行使您的相关权利，请通过以下方式与我们联系：</p>
+        <div class="contact-panel">
+            <p><strong>运营主体</strong>：光年跃迁（温州）科技有限公司</p>
+            <p><strong>电子邮箱</strong>：Jp112022@163.com</p>
+        </div>
+
+        <!-- ========== 页脚 ========== -->
+        <div class="footer">
+            <p>感谢您使用踏序足迹！</p>
+            <p>我们致力于为您提供安全、美好的专属足迹记录体验。</p>
+            <p class="copyright">© 2026 光年跃迁（温州）科技有限公司 版权所有</p>
+        </div>
+
+    </div>
+</body>
+</html>
