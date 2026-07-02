@@ -38,4 +38,6 @@ signing.properties
 android/app/*.jks
 android/app/*.keystore
 android/app/*.p12
+# ===== 临时参考文件夹（手工放置的对照样本，不进 Git）=====
+qitaapp/
 
