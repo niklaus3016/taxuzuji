@@ -10,7 +10,6 @@ import { Sparkles, Calendar, Tag, Filter, SlidersHorizontal, RefreshCw, Mileston
 import { Footprint, MapTheme, MapThemeId, Province, City, TripType, PrivacyConsent, AgreementDocType } from './types';
 import { provincesData } from './data/chinaProvinces';
 import { mapThemes } from './data/themes';
-import { sampleFootprints } from './data/sampleData';
 
 // import Subcomponents
 import ActiveMap from './components/ActiveMap';
@@ -124,28 +123,28 @@ export default function App() {
     if (storedTheme) setThemeId(storedTheme as MapThemeId);
     if (storedSignature) setSignature(storedSignature);
 
-    // C. 足迹数据：只有已同意协议时才加载 / 注入示例（合规：拒绝后不写入任何用户数据）
+    // C. 足迹数据：只有已同意协议时才加载；首次启动为空应用（不预置任何演示数据）
     if (parsedConsent?.agreed) {
       const storedFootprints = safeStorage.getItem('shuxu_footprints');
       if (storedFootprints) {
         setFootprints(JSON.parse(storedFootprints));
       } else {
-        setFootprints(sampleFootprints);
-        safeStorage.setItem('shuxu_footprints', JSON.stringify(sampleFootprints));
+        setFootprints([]);
+        safeStorage.setItem('shuxu_footprints', JSON.stringify([]));
       }
     }
     // 未同意：footprints 保持 []，直到用户点「同意并继续」再注入
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // 6b. 首次同意后，立即注入示例足迹（或加载用户已有备份）
+  // 6b. 首次同意后，立即加载用户已有备份；如为空则保持空应用（不注入演示数据）
   const seedFootprintsAfterConsent = () => {
     const storedFootprints = safeStorage.getItem('shuxu_footprints');
     if (storedFootprints) {
       setFootprints(JSON.parse(storedFootprints));
     } else {
-      setFootprints(sampleFootprints);
-      safeStorage.setItem('shuxu_footprints', JSON.stringify(sampleFootprints));
+      setFootprints([]);
+      safeStorage.setItem('shuxu_footprints', JSON.stringify([]));
     }
   };
 
@@ -163,9 +162,9 @@ export default function App() {
     setShowDeclineModal(false);
     setConsentOpenDetail(null);
     setDeclineHintText(null);
-    // 首次同意 → 立即注入示例数据 / 加载已有
+    // 首次同意 → 保持空应用，提示用户添加第一条足迹
     seedFootprintsAfterConsent();
-    triggerToast('欢迎加入踏序足迹！示例数据已为您预置 ✨');
+    triggerToast('欢迎加入踏序足迹！点击右上角 ＋ 记录你的第一次足迹吧 ✨');
   };
 
   const handleConsentDecline = () => setShowDeclineModal(true);
