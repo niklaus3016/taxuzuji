@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.taxuzuji.app',
-  appName: '踏序足迹',
+  appId: 'com.yuexuxingzuo.app',
+  appName: '月序星座',
   webDir: 'dist',
   android: {}
 };
