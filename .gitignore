@@ -29,3 +29,13 @@ android/.idea/
 # Env
 .env
 .env.*
+# ===== Android Release 签名（严禁提交到 git！）=====
+*.jks
+*.keystore
+*.p12
+*.pfx
+signing.properties
+android/app/*.jks
+android/app/*.keystore
+android/app/*.p12
+

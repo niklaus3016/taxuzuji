@@ -3,6 +3,27 @@ apply plugin: 'com.android.application'
 android {
     namespace = "com.taxuzuji.app"
     compileSdk = rootProject.ext.compileSdkVersion
+
+    // ============ Release 签名配置（从 Gradle 属性读取，未配置则静默回落 unsigned） ============
+    def hasReleaseSigning = project.hasProperty('TAXUZUJI_STORE_FILE') &&
+            project.hasProperty('TAXUZUJI_STORE_PASSWORD') &&
+            project.hasProperty('TAXUZUJI_KEY_ALIAS') &&
+            project.hasProperty('TAXUZUJI_KEY_PASSWORD')
+
+    signingConfigs {
+        release {
+            if (hasReleaseSigning) {
+                storeFile     file(TAXUZUJI_STORE_FILE)
+                storePassword TAXUZUJI_STORE_PASSWORD
+                keyAlias      TAXUZUJI_KEY_ALIAS
+                keyPassword   TAXUZUJI_KEY_PASSWORD
+                v1SigningEnabled true
+                v2SigningEnabled true
+                v3SigningEnabled true
+            }
+        }
+    }
+
     defaultConfig {
         applicationId "com.taxuzuji.app"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -17,9 +38,17 @@ android {
         }
     }
     buildTypes {
+        debug {
+            // 使用系统默认 debug.keystore（本地开发 / CI 共用，无需额外配置）
+            minifyEnabled false
+        }
         release {
             minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (hasReleaseSigning) {
+                signingConfig signingConfigs.release
+            }
         }
     }
 }
